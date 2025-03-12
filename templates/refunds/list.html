@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Refund Request List</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Order number</th>
+                    <th>Order date</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for refund in refunds %}
+                <tr>
+                    <td>{{ refund.id }}</td>
+                    <td>{{ refund.order_number }}</td>
+                    <td>{{ refund.order_date }}</td>
+                    <td>{{ refund.first_name }}</td>
+                    <td>{{ refund.last_name }}</td>
+                    <td>{{ refund.email }}</td>
+                    <td>
+                        <span class="badge {% if refund.status == 'approved' %}bg-success{% elif refund.status == 'pending' %}bg-warning{% else %}bg-danger{% endif %}">
+                            {{ refund.status }}
+                        </span>
+                    </td>
+                    <td>
+                        <a href="{% url 'refund_detail' refund.pk %}" class="btn btn-primary btn-sm">Detail</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="8" class="text-center">There are no refund requests</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

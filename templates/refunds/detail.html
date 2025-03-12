@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Refund Request Detail #{{ refund.id }}</h2>
+    <div class="card shadow-sm p-4">
+        <h4 class="mb-3">Order info</h4>
+        <p><strong>Order number:</strong> {{ refund.order_number }}</p>
+        <p><strong>Order date:</strong> {{ refund.order_date }}</p>
+        
+        <h4 class="mt-4">Contact data</h4>
+        <p><strong>First name:</strong> {{ refund.first_name }}</p>
+        <p><strong>Last name:</strong> {{ refund.last_name }}</p>
+        <p><strong>Phone number:</strong> {{ refund.phone_number }}</p>
+        <p><strong>Email:</strong> {{ refund.email }}</p>
+
+        <h4 class="mt-4">Адрес</h4>
+        <p><strong>Country:</strong> {{ refund.country }}</p>
+        <p><strong>City:</strong> {{ refund.city }}</p>
+        <p><strong>Address:</strong> {{ refund.address }}</p>
+        <p><strong>Postal code:</strong> {{ refund.postal_code }}</p>
+
+        <h4 class="mt-4">Goods</h4>
+        <p>{{ refund.products }}</p>
+
+        <h4 class="mt-4">Reason</h4>
+        <p>{{ refund.reason }}</p>
+
+        <h4 class="mt-4">Bank data</h4>
+        <p><strong>Bank:</strong> {{ refund.bank_name }}</p>
+        <p><strong>Account type:</strong> {{ refund.account_type }}</p>
+        <p><strong>IBAN:</strong> {{ refund.iban }}</p>
+        <p><strong>Verified IBAN:</strong> {% if refund.iban_verified %}✔ Yes{% else %}❌ No{% endif %}</p>
+
+        <a href="{% url 'refund_list' %}" class="btn btn-secondary mt-3">Back to list</a>
+    </div>
+</div>
+{% endblock %}
