@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
+from django.forms import ModelForm
 
-from refund_sytem.models import CustomUser
+from refund_sytem.models import CustomUser, RefundRequest
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -11,3 +12,9 @@ class CustomUserCreationForm(UserCreationForm):
             "last_name",
             "email",
         )
+
+
+class RefundRequestForm(ModelForm):
+    class Meta:
+        model = RefundRequest
+        exclude = ['user', 'status', 'iban_verified']

@@ -2,7 +2,11 @@
 
 {% block content %}
 <div class="container mt-4">
-    <h2 class="mb-4">Refund Request List</h2>
+    <h2 class="mb-4">
+      Refund Request List
+      <a style="float: right" class="btn btn-primary" href="{% url 'create_refund' %}">Add new refund</a>
+      <a style="float: right" class="btn btn-success" href="{% url 'signup' %}">Create new user</a>
+    </h2>
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
             <thead class="table-dark">
